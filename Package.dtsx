@@ -1,0 +1,2755 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2026 12:36:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-0UMIQ12T"
+  DTS:CreatorName="LAPTOP-0UMIQ12T\mohamed"
+  DTS:DTSID="{246CC7A4-498B-4A0A-B706-4D269B5262EB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{307D457F-C331-4F6A-910D-5F306C3F80C4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{72EC815C-49A4-4C0E-913B-10F9CD66A2C9}"
+      DTS:ObjectName="CM_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DW_Association;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{72EC815C-49A4-4C0E-913B-10F9CD66A2C9}localhost.DW_Association;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CM_OLTP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{38A52BBB-3118-4B33-8735-87C8201A8258}"
+      DTS:ObjectName="CM_OLTP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DB_Association;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{38A52BBB-3118-4B33-8735-87C8201A8258}localhost.DB_Association;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Charger DimCampagne"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{1574E824-EC7D-4252-9DB1-AC4AA041022B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger DimCampagne"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger DimCampagne\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DimCampagne]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger DimCampagne\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[NomCampagne]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NomCampagne"
+                      externalMetadataColumnId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[NomCampagne]"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomCampagne]" />
+                    <inputColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ObjectifDons]"
+                      cachedDataType="numeric"
+                      cachedName="ObjectifDons"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ObjectifDons]"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ObjectifDons]" />
+                    <inputColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[CampagneID]"
+                      cachedDataType="i4"
+                      cachedName="CampagneID"
+                      externalMetadataColumnId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CampagneID_NK]"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CampagneSK]"
+                      dataType="i4"
+                      name="CampagneSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CampagneID_NK]"
+                      dataType="i4"
+                      name="CampagneID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[NomCampagne]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NomCampagne" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ObjectifDons]"
+                      dataType="numeric"
+                      name="ObjectifDons"
+                      precision="12"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger DimCampagne\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimCampagne\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimCampagne\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger DimCampagne\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CampagneID, NomCampagne, ObjectifDons FROM Campagnes</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger DimCampagne\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_OLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_OLTP]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CampagneID]"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]"
+                      name="CampagneID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomCampagne]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomCampagne]"
+                      length="100"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomCampagne]"
+                      name="NomCampagne"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ObjectifDons]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ObjectifDons]"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ObjectifDons]"
+                      name="ObjectifDons"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CampagneID]"
+                      dataType="i4"
+                      name="CampagneID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomCampagne]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NomCampagne" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ObjectifDons]"
+                      dataType="numeric"
+                      name="ObjectifDons"
+                      precision="12"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CampagneID]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CampagneID]"
+                      name="CampagneID" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomCampagne]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomCampagne]"
+                      name="NomCampagne" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ObjectifDons]"
+                      dataType="numeric"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ObjectifDons]"
+                      name="ObjectifDons"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger DimCampagne.Paths[Sortie de source OLE DB]"
+              endId="Package\Charger DimCampagne\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger DimCampagne\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Charger DimDonateur"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{4D7F7137-9650-4F40-B864-D3321049AF5F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger DimDonateur"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger DimDonateur\Colonne dérivée"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Colonne dérivée"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Charger DimDonateur\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger DimDonateur\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[NomDonateur]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NomDonateur"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomDonateur]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Charger DimDonateur\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[CleanNom]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="150"
+                      lineageId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[CleanNom]"
+                      name="CleanNom"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(DT_STR,150,1252)[UPPER]([TRIM](#{Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomDonateur]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,150,1252)UPPER(TRIM(NomDonateur))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Charger DimDonateur\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger DimDonateur\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DimDonateur]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger DimDonateur\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[DonateurID]"
+                      cachedDataType="i4"
+                      cachedName="DonateurID"
+                      externalMetadataColumnId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DonateurID_NK]"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]" />
+                    <inputColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Ville]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Ville"
+                      externalMetadataColumnId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Ville]"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Ville]" />
+                    <inputColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[CleanNom]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="CleanNom"
+                      externalMetadataColumnId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[NomDonateur]"
+                      lineageId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[CleanNom]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DonateurSK]"
+                      dataType="i4"
+                      name="DonateurSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DonateurID_NK]"
+                      dataType="i4"
+                      name="DonateurID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[NomDonateur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NomDonateur" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TypeDonateur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TypeDonateur" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Ville]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Ville" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger DimDonateur\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger DimDonateur\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DonateurID, NomDonateur, Ville FROM Donateurs</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger DimDonateur\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_OLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_OLTP]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DonateurID]"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]"
+                      name="DonateurID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomDonateur]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomDonateur]"
+                      length="150"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomDonateur]"
+                      name="NomDonateur"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Ville]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Ville]"
+                      length="100"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Ville]"
+                      name="Ville"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DonateurID]"
+                      dataType="i4"
+                      name="DonateurID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomDonateur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NomDonateur" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Ville]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Ville" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DonateurID]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DonateurID]"
+                      name="DonateurID" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomDonateur]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomDonateur]"
+                      name="NomDonateur" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Ville]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Ville]"
+                      name="Ville" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger DimDonateur.Paths[Sortie de colonne dérivée]"
+              endId="Package\Charger DimDonateur\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Charger DimDonateur\Colonne dérivée.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Charger DimDonateur.Paths[Sortie de source OLE DB]"
+              endId="Package\Charger DimDonateur\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger DimDonateur\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Charger DimProjet"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{9F7F57EB-57B0-46F3-87A2-73A333C2D48B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger DimProjet"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger DimProjet\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[DimProjet]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger DimProjet\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[NomProjet]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NomProjet"
+                      externalMetadataColumnId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[NomProjet]"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomProjet]" />
+                    <inputColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[BudgetPrevisionnel]"
+                      cachedDataType="numeric"
+                      cachedName="BudgetPrevisionnel"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[BudgetPrevisionnel]"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BudgetPrevisionnel]" />
+                    <inputColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Statut]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Statut"
+                      externalMetadataColumnId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Statut]"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Statut]" />
+                    <inputColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ProjetID]"
+                      cachedDataType="i4"
+                      cachedName="ProjetID"
+                      externalMetadataColumnId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ProjetID_NK]"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ProjetSK]"
+                      dataType="i4"
+                      name="ProjetSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ProjetID_NK]"
+                      dataType="i4"
+                      name="ProjetID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[NomProjet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NomProjet" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[BudgetPrevisionnel]"
+                      dataType="numeric"
+                      name="BudgetPrevisionnel"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Statut]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Statut" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger DimProjet\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimProjet\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimProjet\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger DimProjet\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT ProjetID, NomProjet, BudgetPrevisionnel, Statut FROM Projets</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger DimProjet\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_OLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_OLTP]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ProjetID]"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetID]"
+                      name="ProjetID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomProjet]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomProjet]"
+                      length="150"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[NomProjet]"
+                      name="NomProjet"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BudgetPrevisionnel]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[BudgetPrevisionnel]"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[BudgetPrevisionnel]"
+                      name="BudgetPrevisionnel"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Statut]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Statut]"
+                      length="30"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Statut]"
+                      name="Statut"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ProjetID]"
+                      dataType="i4"
+                      name="ProjetID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[NomProjet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NomProjet" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[BudgetPrevisionnel]"
+                      dataType="numeric"
+                      name="BudgetPrevisionnel"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Statut]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Statut" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ProjetID]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ProjetID]"
+                      name="ProjetID" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomProjet]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[NomProjet]"
+                      name="NomProjet" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[BudgetPrevisionnel]"
+                      dataType="numeric"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[BudgetPrevisionnel]"
+                      name="BudgetPrevisionnel"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Statut]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Statut]"
+                      name="Statut" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger DimProjet.Paths[Sortie de source OLE DB]"
+              endId="Package\Charger DimProjet\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger DimProjet\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Charger FactDons"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{3CEBCF01-F324-450D-AF83-2F8B707C7802}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger FactDons"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger FactDons\Colonne dérivée"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Colonne dérivée"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Charger FactDons\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger FactDons\Colonne dérivée.Inputs[Entrée de colonne dérivée].Columns[DateDon]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateDon"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateDon]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Charger FactDons\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[DateSK]"
+                      name="DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">(DT_I4)(([YEAR]((DT_DBTIMESTAMP)#{Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateDon]}) * 10000) + ([MONTH]((DT_DBTIMESTAMP)#{Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateDon]}) * 100) + [DAY]((DT_DBTIMESTAMP)#{Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateDon]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)((YEAR((DT_DBTIMESTAMP)DateDon) * 10000) + (MONTH((DT_DBTIMESTAMP)DateDon) * 100) + DAY((DT_DBTIMESTAMP)DateDon))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Charger FactDons\Colonne dérivée.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger FactDons\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[FactDons]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger FactDons\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Montant]"
+                      cachedDataType="numeric"
+                      cachedName="Montant"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Montant]"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Montant]" />
+                    <inputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ProjetSK]"
+                      cachedDataType="i4"
+                      cachedName="ProjetSK"
+                      externalMetadataColumnId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ProjetSK]"
+                      lineageId="Package\Charger FactDons\Lookup 2.Outputs[Sortie de recherche avec correspondance].Columns[ProjetSK]" />
+                    <inputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[CampagneSK]"
+                      cachedDataType="i4"
+                      cachedName="CampagneSK"
+                      externalMetadataColumnId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CampagneSK]"
+                      lineageId="Package\Charger FactDons\Lookup 3.Outputs[Sortie de recherche avec correspondance].Columns[CampagneSK]" />
+                    <inputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DateSK"
+                      externalMetadataColumnId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DateSK]"
+                      lineageId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie de colonne dérivée].Columns[DateSK]" />
+                    <inputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[DonateurSK]"
+                      cachedDataType="i4"
+                      cachedName="DonateurSK"
+                      externalMetadataColumnId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DonateurSK]"
+                      lineageId="Package\Charger FactDons\Lookup 1.Outputs[Sortie de recherche avec correspondance].Columns[DonateurSK]" />
+                    <inputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Canal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Canal"
+                      externalMetadataColumnId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Canal]"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Canal]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DonID_NK]"
+                      dataType="i4"
+                      name="DonID_NK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DonateurSK]"
+                      dataType="i4"
+                      name="DonateurSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ProjetSK]"
+                      dataType="i4"
+                      name="ProjetSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[CampagneSK]"
+                      dataType="i4"
+                      name="CampagneSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DateSK]"
+                      dataType="i4"
+                      name="DateSK" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Montant]"
+                      dataType="numeric"
+                      name="Montant"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Canal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Canal" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger FactDons\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger FactDons\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimDonateur]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimDonateur]) [refTable]
+where [refTable].[DonateurID_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DonateurSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DonateurID_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NomDonateur" dataType="DT_STR" length="150" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TypeDonateur" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Ville" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger FactDons\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger FactDons\Lookup 1.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger FactDons\Lookup 1.Inputs[Entrée de recherche].Columns[DonateurID]"
+                      cachedDataType="i4"
+                      cachedName="DonateurID"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">DonateurID_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger FactDons\Lookup 1.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger FactDons\Lookup 1.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 1.Outputs[Sortie de recherche avec correspondance].Columns[DonateurSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger FactDons\Lookup 1.Outputs[Sortie de recherche avec correspondance].Columns[DonateurSK]"
+                      name="DonateurSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">DonateurSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Lookup 1.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger FactDons\Lookup 1.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Lookup 1.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger FactDons\Lookup 1.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Lookup 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Lookup 1.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger FactDons\Lookup 2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup 2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimProjet]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimProjet]) [refTable]
+where [refTable].[ProjetID_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProjetSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProjetID_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NomProjet" dataType="DT_STR" length="150" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="BudgetPrevisionnel" dataType="DT_NUMERIC" length="0" precision="12" scale="2" codePage="0"/&gt;&lt;referenceColumn name="Statut" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetDestination]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger FactDons\Lookup 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger FactDons\Lookup 2.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger FactDons\Lookup 2.Inputs[Entrée de recherche].Columns[ProjetDestination]"
+                      cachedDataType="i4"
+                      cachedName="ProjetDestination"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetDestination]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">ProjetID_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger FactDons\Lookup 2.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger FactDons\Lookup 2.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 2.Outputs[Sortie de recherche avec correspondance].Columns[ProjetSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger FactDons\Lookup 2.Outputs[Sortie de recherche avec correspondance].Columns[ProjetSK]"
+                      name="ProjetSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">ProjetSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Lookup 2.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger FactDons\Lookup 2.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Lookup 2.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger FactDons\Lookup 2.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Lookup 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Lookup 2.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger FactDons\Lookup 3"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup 3"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DimCampagne]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimCampagne]) [refTable]
+where [refTable].[CampagneID_NK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CampagneSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CampagneID_NK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NomCampagne" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ObjectifDons" dataType="DT_NUMERIC" length="0" precision="12" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger FactDons\Lookup 3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_DW]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger FactDons\Lookup 3.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger FactDons\Lookup 3.Inputs[Entrée de recherche].Columns[CampagneID]"
+                      cachedDataType="i4"
+                      cachedName="CampagneID"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">CampagneID_NK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger FactDons\Lookup 3.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger FactDons\Lookup 3.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 3.Outputs[Sortie de recherche avec correspondance].Columns[CampagneSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger FactDons\Lookup 3.Outputs[Sortie de recherche avec correspondance].Columns[CampagneSK]"
+                      name="CampagneSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">CampagneSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Lookup 3.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger FactDons\Lookup 3.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Lookup 3.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger FactDons\Lookup 3.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Lookup 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Lookup 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Lookup 3.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger FactDons\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DonateurID, CampagneID, ProjetDestination, DateDon, Montant, Canal 
+FROM Dons</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger FactDons\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CM_OLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[CM_OLTP]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DonateurID]"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DonateurID]"
+                      name="DonateurID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CampagneID]"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CampagneID]"
+                      name="CampagneID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetDestination]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ProjetDestination]"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[ProjetDestination]"
+                      name="ProjetDestination"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateDon]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DateDon]"
+                      length="10"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DateDon]"
+                      name="DateDon"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Montant]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Montant]"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Montant]"
+                      name="Montant"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Canal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Canal]"
+                      length="50"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Canal]"
+                      name="Canal"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DonateurID]"
+                      dataType="i4"
+                      name="DonateurID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CampagneID]"
+                      dataType="i4"
+                      name="CampagneID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[ProjetDestination]"
+                      dataType="i4"
+                      name="ProjetDestination" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DateDon]"
+                      dataType="wstr"
+                      length="10"
+                      name="DateDon" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Montant]"
+                      dataType="numeric"
+                      name="Montant"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Canal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Canal" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DonateurID]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DonateurID]"
+                      name="DonateurID" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CampagneID]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CampagneID]"
+                      name="CampagneID" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ProjetDestination]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ProjetDestination]"
+                      name="ProjetDestination" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DateDon]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DateDon]"
+                      name="DateDon" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Montant]"
+                      dataType="numeric"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Montant]"
+                      name="Montant"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Canal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Canal]"
+                      name="Canal" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger FactDons.Paths[Sortie de colonne dérivée]"
+              endId="Package\Charger FactDons\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Charger FactDons\Colonne dérivée.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Charger FactDons.Paths[Sortie de recherche avec correspondance]"
+              endId="Package\Charger FactDons\Lookup 2.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger FactDons\Lookup 1.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger FactDons.Paths[Sortie de recherche avec correspondance1]"
+              endId="Package\Charger FactDons\Lookup 3.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger FactDons\Lookup 2.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger FactDons.Paths[Sortie de recherche avec correspondance2]"
+              endId="Package\Charger FactDons\Colonne dérivée.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger FactDons\Lookup 3.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger FactDons.Paths[Sortie de source OLE DB]"
+              endId="Package\Charger FactDons\Lookup 1.Inputs[Entrée de recherche]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger FactDons\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Nettoyer DW"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{007FFFC4-C700-435A-9505-46A15D3CB48D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Nettoyer DW"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{72EC815C-49A4-4C0E-913B-10F9CD66A2C9}"
+          SQLTask:SqlStatementSource="DELETE FROM FactDons;&#xA;DELETE FROM DimDonateur;&#xA;DELETE FROM DimProjet;&#xA;DELETE FROM DimCampagne;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte]"
+      DTS:CreationName=""
+      DTS:DTSID="{3329E557-54AD-4B92-9D42-F3353C508ABB}"
+      DTS:From="Package\Charger DimDonateur"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte"
+      DTS:To="Package\Charger DimProjet" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{0CCD5A8E-8593-435B-BE32-AA4CF17CA83A}"
+      DTS:From="Package\Charger DimProjet"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 1"
+      DTS:To="Package\Charger DimCampagne" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{54A75639-C7BB-418B-B963-74CEAED1A254}"
+      DTS:From="Package\Nettoyer DW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 2"
+      DTS:To="Package\Charger DimDonateur" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{09D6A00B-44A5-47F0-99D4-EFB21E27E46C}"
+      DTS:From="Package\Charger DimCampagne"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 3"
+      DTS:To="Package\Charger FactDons" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Charger DimDonateur"
+          TopLeft="347.166647998824,76.5666661724779" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Charger DimProjet"
+          TopLeft="354.166647315854,164.666665521595" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte]"
+          TopLeft="436.866647657339,118.166666172478">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.4999993491172"
+              Start="0,0"
+              End="0,38.9999993491172">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.9999993491172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Charger DimCampagne"
+          TopLeft="341.666647998824,248.733331603673" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 1]"
+          TopLeft="436.116647657339,206.266665521595">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.4666660820777"
+              Start="0,0"
+              End="0,34.9666660820777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.9666660820777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Nettoyer DW"
+          TopLeft="363.333313481676,5.19999996383988" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 2]"
+          TopLeft="434.64998074025,46.7999999638399">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.766666208638"
+              Start="0,0"
+              End="0,22.266666208638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.266666208638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Charger FactDons"
+          TopLeft="353.333314028052,330.19999770383" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 3]"
+          TopLeft="435.299981013438,290.333331603673">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.8666661001576"
+              Start="0,0"
+              End="0,32.3666661001576">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.3666661001576" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Charger DimDonateur">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Charger DimDonateur\Source OLE DB"
+          TopLeft="241.111097937381,65.8666662086381" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Charger DimDonateur\Colonne dérivée"
+          TopLeft="237.222209260972,149.066665630076" />
+        <EdgeLayout
+          Id="Package\Charger DimDonateur.Paths[Sortie de source OLE DB]"
+          TopLeft="315.766653599177,107.466666208638">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5999994214376"
+              Start="0,0"
+              End="0,34.0999994214376">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0999994214376" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Charger DimDonateur\Destination OLE DB"
+          TopLeft="227.777765332549,231.111109503993" />
+        <EdgeLayout
+          Id="Package\Charger DimDonateur.Paths[Sortie de colonne dérivée]"
+          TopLeft="313.899987296761,190.666665630076">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.4444438739176"
+              Start="0,0"
+              End="0,32.9444438739176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.9444438739176" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger DimDonateur\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger DimDonateur\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Charger DimProjet">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Charger DimProjet\Source OLE DB"
+          TopLeft="443.999993383885,93.9999985992909" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Charger DimProjet\Destination OLE DB"
+          TopLeft="431.999993562698,179.999997317791" />
+        <EdgeLayout
+          Id="Package\Charger DimProjet.Paths[Sortie de source OLE DB]"
+          TopLeft="518.799993473292,135.599998599291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.3999987185002"
+              Start="0,0"
+              End="0,36.8999987185002">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.8999987185002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger DimProjet\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger DimProjet\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Charger DimCampagne">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Charger DimCampagne\Source OLE DB"
+          TopLeft="446.999993339181,86.999998703599" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Charger DimCampagne\Destination OLE DB"
+          TopLeft="432.999993547797,177.999997347593" />
+        <EdgeLayout
+          Id="Package\Charger DimCampagne.Paths[Sortie de source OLE DB]"
+          TopLeft="520.799993443489,128.599998703599">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.3999986439943"
+              Start="0,0"
+              End="0,41.8999986439943">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.8999986439943" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger DimCampagne\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger DimCampagne\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Charger FactDons">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Charger FactDons\Source OLE DB"
+          TopLeft="475.545447459275,46.2727265832099" />
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Charger FactDons\Lookup 1"
+          TopLeft="487.545447280461,134.272725271908" />
+        <EdgeLayout
+          Id="Package\Charger FactDons.Paths[Sortie de source OLE DB]"
+          TopLeft="549.745447369868,87.8727265832099">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3999986886978"
+              Start="0,0"
+              End="0,38.8999986886978">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8999986886978" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Charger FactDons\Lookup 2"
+          TopLeft="493.545447191054,226.272723901001" />
+        <EdgeLayout
+          Id="Package\Charger FactDons.Paths[Sortie de recherche avec correspondance]"
+          TopLeft="550.945447235758,175.872725271908">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.3999986290932"
+              Start="0,0"
+              End="0,42.8999986290932">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8999986290932" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,15.6453118145466,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Charger FactDons\Lookup 3"
+          TopLeft="492.545447205955,309.272722664204" />
+        <EdgeLayout
+          Id="Package\Charger FactDons.Paths[Sortie de recherche avec correspondance1]"
+          TopLeft="553.445447198505,267.872723901001">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.3999987632035"
+              Start="0,0"
+              End="0,33.8999987632035">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.8999987632035" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,11.1453118816018,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\Charger FactDons\Colonne dérivée"
+          TopLeft="475.454538369721,378.18181254647" />
+        <EdgeLayout
+          Id="Package\Charger FactDons.Paths[Sortie de recherche avec correspondance2]"
+          TopLeft="552.799992787838,350.872722664204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,27.309089882266"
+              Start="0,0"
+              End="0,19.809089882266">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.809089882266" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,4.099857441133,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Charger FactDons\Destination OLE DB"
+          TopLeft="465.454538518732,452.727266522971" />
+        <EdgeLayout
+          Id="Package\Charger FactDons.Paths[Sortie de colonne dérivée]"
+          TopLeft="551.854538444227,419.78181254647">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.945453976501"
+              Start="0,0"
+              End="0,25.445453976501">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.445453976501" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger FactDons\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger FactDons\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDonateur]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger FactDons\Lookup 2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProjet]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger FactDons\Lookup 3">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimCampagne]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger FactDons\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
