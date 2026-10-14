@@ -51,6 +51,10 @@ Le fichier Power BI est disponible dans le dépôt :
 
 `04_Dashboard_Association.pbix`
 
+### 📊 Aperçu du Dashboard
+
+![Dashboard Power BI](dashboard-overview.png)
+
 ## 📁 Fichiers du projet
 
 | Fichier | Description |
